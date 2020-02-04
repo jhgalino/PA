@@ -20,7 +20,7 @@ for i in range(2 * numInputs):
 sentence = input()
 
 for i, x in enumerate(inputList[::2]):
-    while search(x, sentence):
-        sentence = replacer(sentence, inputList[i + 1], x)
+    while search(inputList[i], sentence):
+        sentence = replacer(sentence, inputList[i + 1], inputList[i])
 
 print(sentence)
