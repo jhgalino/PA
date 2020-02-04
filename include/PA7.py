@@ -12,14 +12,20 @@ def removeItem(listToSearchIn: list, indexToRemove: int):
 
 
 def checkForAddends(listToSearchIn: list, initialVal: int, total: int):
-    result = list(set(list(filter(lambda x: x + initialVal == total, listToSearchIn))))
+    result = set(list(filter(lambda x: x + initialVal == total, listToSearchIn)))
+    result = list(result)
     if len(result) > 0:
         return result[0]
+    else:
+        return -1
 
 
 for i in sums:
-    for j in inpList:
-        results.add(tuple(sorted((j, checkForAddends(inpList, j, i)))))
+    for j, v in enumerate(inpList):
+        tempList = removeItem(inpList, j)
+        z = checkForAddends(tempList, inpList[j], i)
+        if z != -1:
+            results.add(tuple(sorted((inpList[j], z))))
     results = sorted(list(results))
     print(len(results))
     for k in results:
