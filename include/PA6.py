@@ -19,7 +19,7 @@ for i in range(2 * numInputs):
     inputList.append(input())
 sentence = input()
 
-for i, x in enumerate(inputList[::2]):
+for i in range(0, len(inputList), 2):
     while search(inputList[i], sentence):
         sentence = replacer(sentence, inputList[i + 1], inputList[i])
 
