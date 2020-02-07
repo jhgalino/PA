@@ -5,19 +5,19 @@ for i in range(testCases):
 
 
 def check(a: str):
-    global curlsOpen, curlsClose, bracksClose, bracksOpen, parensClose, parensOpen
+    global totalSum
     if a == "{":
-        opens.append(1)
+        totalSum += 1
     elif a == "}":
-        closes.append(1)
+        totalSum -= 1
     elif a == "[":
-        opens.append(2)
+        totalSum += 2
     elif a == "]":
-        closes.append(2)
+        totalSum -= 2
     elif a == "(":
-        opens.append(3)
+        totalSum += 3
     elif a == ")":
-        parensClose += 1
+        totalSum -= 3
     return
 
 
@@ -35,17 +35,9 @@ def traverse(eyyy: list):
 
 
 for i in inputs:
-    curlsOpen, curlsClose = 0, 0
-    bracksOpen, bracksClose = 0, 0
-    parensOpen, parensClose = 0, 0
-    opens = []
-    closes = []
+    totalSum = 0
     traverse(i)
-    if (
-        curlsOpen == curlsClose
-        and bracksOpen == bracksClose
-        and parensOpen == parensClose
-    ):
+    if totalSum == 0:
         print("True")
     else:
         print("False")
