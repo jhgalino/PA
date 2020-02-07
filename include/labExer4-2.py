@@ -7,15 +7,15 @@ for i in range(testCases):
 def check(a: str):
     global curlsOpen, curlsClose, bracksClose, bracksOpen, parensClose, parensOpen
     if a == "{":
-        curlsOpen += 1
+        opens.append(1)
     elif a == "}":
-        curlsClose += 1
+        closes.append(1)
     elif a == "[":
-        bracksOpen += 1
+        opens.append(2)
     elif a == "]":
-        bracksClose += 1
+        closes.append(2)
     elif a == "(":
-        parensOpen += 1
+        opens.append(3)
     elif a == ")":
         parensClose += 1
     return
@@ -38,6 +38,8 @@ for i in inputs:
     curlsOpen, curlsClose = 0, 0
     bracksOpen, bracksClose = 0, 0
     parensOpen, parensClose = 0, 0
+    opens = []
+    closes = []
     traverse(i)
     if (
         curlsOpen == curlsClose
